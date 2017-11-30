@@ -1,18 +1,12 @@
 ---
 title: "SCUBA Metadata Catalogue"
-header-includes: 
-  \usepackage{fancyhdr} 
-  \usepackage{graphicx} 
-  \usepackage{eurosym} 
-  \usepackage{booktabs,xcolor}
-  \pagestyle{fancy} \fancyhf{} 
-  \addtolength{\headheight}{1.0cm} 
-  \rhead{SCUBA Metadata Catalogue - \today} 
-  \lhead{\includegraphics[width=4cm]{img/CaDC_logo.png}} 
-  \rfoot{Page \thepage} \fancypagestyle{plain}{\pagestyle{fancy}}
 output:
   pdf_document: default
   html_document: default
+header-includes: \usepackage{fancyhdr} \usepackage{graphicx} \usepackage{eurosym}
+  \usepackage{booktabs,xcolor} \pagestyle{fancy} \fancyhf{} \addtolength{\headheight}{1.0cm}
+  \rhead{SCUBA Metadata Catalogue - \today} \lhead{\includegraphics[width=4cm]{img/CaDC_logo.png}}
+  \rfoot{Page \thepage} \fancypagestyle{plain}{\pagestyle{fancy}}
 urlcolor: blue
 ---
 
@@ -26,7 +20,7 @@ library(plotly)
 library(leaflet.extras)
 library(rpostgis)
 library(mapview)
-source("../config/dbconfig.R")
+#source("config/dbconfig.R")
 source("R/plots.R")
 
 conn<-dbConnect("PostgreSQL",dbname = Sys.getenv("GREY_SCUBA_DBNAME"),
@@ -124,18 +118,11 @@ http://californiadatacollaborative.org/blog/2016/7/19/request-for-ideas-demand-e
 
 ### Data Sharing
 
-Data may be provided at no cost to qualified researchers with explicit written permission from member utilities. If you would like to gain access to data, please reach out with a project description including the following:
+Data may be provided at no cost to qualified researchers with explicit written permission from member utilities. If you would like to gain access to data, please complete the data access application located here:
 
-1. Purpose statement
-2. Initial assumptions
-3. Source(s) of data
-4. Project partners
-5. Timeline
-6. Budget
-7. Deliverables
-8. Links to any relevent qualifications (e.g. CV, Google Scholar, faculty bio, etc.).
+https://goo.gl/forms/PmiBomvG68qh7je63
 
-Your proposal will be circulated with utility staff and you may be asked to discuss your ideas in a call or webinar with whichever of our Data Action Teams is most relvant to your proposal. Interested member utilities will provide their written consent, and you will need to sign a nondisclosure agreement.
+Access to enriched public data is relatively simple. For requests to access secure data (customer metered use) your proposal will be circulated with utility staff and you may be asked to discuss your ideas in a call or webinar with whichever of our Data Action Teams is most relvant to your proposal. Interested member utilities will provide their written consent, and you will need to sign a nondisclosure agreement.
 
 This process is expected to take several months, after which you will be provided with data from all utilities who have given their consent. Please reach out to info@CaliforniaDataCollaborative.com with any requests.
 

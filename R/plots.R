@@ -30,7 +30,8 @@ get_scuba_utility_polygons<- function(conn){
   WHERE s.utility_id = utils.utility_id
     AND utils.utility_id is not null
   "
-  df <- pgGetGeom(conn, query=SCUBA_UTILITY_POLYGONS)
+  df = st_read_db(conn=conn, query=SCUBA_UTILITY_POLYGONS, geom_column='geom')
+  # df <- pgGetGeom(conn, query=SCUBA_UTILITY_POLYGONS)
   # q <- format_query(SCUBA_UTILITY_POLYGONS)
   # query <- dbplyr::build_sql(dplyr::sql(q))
   # 

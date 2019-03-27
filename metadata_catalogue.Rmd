@@ -18,16 +18,20 @@ library(leaflet)
 library(ggmap)
 library(plotly)
 library(leaflet.extras)
-library(rpostgis)
+# library(rpostgis)
+library(RPostgreSQL)
 library(mapview)
+library(sf)
 #source("config/dbconfig.R")
 source("R/plots.R")
 
-conn<-dbConnect("PostgreSQL",dbname = Sys.getenv("GREY_SCUBA_DBNAME"),
+conn<-dbConnect(RPostgres::Postgres(),
+                            dbname = Sys.getenv("GREY_SCUBA_DBNAME"),
                             port = Sys.getenv("GREY_SCUBA_PORT"),
                             user = Sys.getenv("GREY_SCUBA_USER"),
                             password = Sys.getenv("GREY_SCUBA_PASS"),
-                            host = Sys.getenv("GREY_SCUBA_HOST"))
+                            host = Sys.getenv("GREY_SCUBA_HOST"),
+                            sslmode="require")
 
 utility_geoms <- get_scuba_utility_polygons(conn)
 
@@ -54,7 +58,9 @@ avg_counts <- tmp %>% filter(usage_year >= 2015) %>%
 
 
 
-The SCUBA data warehouse serves as a central repository for granular water use information from local water utilities in California, as well as for related contextual datasets. 
+The SCUBA data warehouse serves as a central repository for granular water use information from local water utilities in California.
+
+If you are interested in using this data for 
 
 ## Overview of data in SCUBA
 
